@@ -1,0 +1,150 @@
+  body {
+    margin: 0;
+  }
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    position: relative;
+  }
+  .footer{
+      background-color: #303030;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 0;
+      transition: 0.3s all ease-in;
+  }
+  
+  body {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #eee;
+  }
+  
+  .header {
+        height: 75vh;
+        background: linear-gradient(to right bottom,   rgba(76, 216, 255, 0.8),  rgb(90, 196, 187, 0.8));
+        background: -webkit-linear-gradient(to right bottom,   rgba(76, 216, 255, 0.8),  rgb(90, 196, 187, 0.8));
+        background: -moz-linear-gradient(to right bottom,   rgba(76, 216, 255, 0.8),  rgb(90, 196, 187, 0.8));
+        background: -o-linear-gradient(to right bottom,   rgba(76, 216, 255, 0.8),  rgb(90, 196, 187, 0.8)); 
+        background-size: cover;
+        background-position: top;
+        position: relative;
+        clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+  }
+  /* if browser is edge 16 +*/
+  @supports (-ms-ime-align:auto) {
+      .header{
+            height: 75vh;
+            background-size: cover;
+            background-position: top;
+            position: relative;
+            background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImczOTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzRDRDhGRiIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzVBQzRDNSIgb2Zmc2V0PSIwLjgiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnMzkwKSIgLz4KPC9zdmc+);
+      
+      }
+   }
+
+   @supports (-ms-accelerator:true) {
+      /* IE Edge 12+ CSS */ 
+      .header{
+            height: 75vh;
+            background-size: cover;
+            background-position: top;
+            position: relative;
+            background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImczOTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzRDRDhGRiIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzVBQzRDNSIgb2Zmc2V0PSIwLjgiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnMzkwKSIgLz4KPC9zdmc+);
+      
+            clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+      }
+   }
+  
+  .brand-box {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+  }
+  
+  .brand { 
+      font-size: 20px;
+      color: #fff; 
+  }
+  
+  .text-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+  }
+  
+  .heading-primary {
+        color: #fff;
+        text-transform: uppercase;
+  
+        backface-visibility: hidden;
+        margin-bottom: 30px;
+  }
+  
+  .heading-primary-main {
+        display: block;
+        font-size: 26px;
+        font-weight: 400;
+        letter-spacing: 5px;
+  }
+  
+  .heading-primary-sub {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 7.4px;
+  }
+  
+  .btn:link,
+  .btn:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: inline-block;
+        border-radius: 100px;
+        transition: all .2s;
+        position: relative;
+  }
+  
+  .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-white {
+        background-color: #fff;
+        color: #777;
+      font-size: 14px;
+  }
+  @media screen and (max-width: 1024px){
+      .btn-white {
+          background-color: #fff;
+          color: #777;
+          font-size: 12px;
+      }
+      .heading-primary-main {
+          display: block;
+          font-size: 16px;
+          font-weight: 400;
+          letter-spacing: 2px;
+      }
+  
+      .heading-primary-sub {
+          display: block;
+          font-size: 18px;
+          font-weight: 700;
+          letter-spacing: 2px;
+      }
+  }

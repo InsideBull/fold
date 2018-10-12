@@ -1,0 +1,203 @@
+  #inspire{
+    overflow: hidden;
+  }
+  .item {
+    font-size: 20px;
+  }
+  #copy{
+    color: black;
+  }
+  .mapboxgl-map{
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .geocoder{
+    z-index:1;
+    width:100%;
+    margin: 0 auto;
+  }
+  #markerGeocoder{
+    z-index:1;
+    width:100%;
+    margin: 0 auto;
+  }
+  .mapboxgl-ctrl-geocoder {
+    min-width:100%;
+  }
+  .title {
+    background-color: #5ac4bb;
+    color: white;
+  }
+  .rotating {
+    transition: transform 1s ease-in-out;
+  }
+  .rotating:hover {
+    transform: rotateZ(360deg);
+    opacity: 0.3;
+  }
+  .btnTooltip {
+    margin-left: 300px;
+  }
+  @media screen and (max-width: 1260px){
+    .btnTooltip {
+      margin-left: 0px;
+    }
+  }
+  .router-link-active{
+    color: white;
+    text-decoration: none;
+  }
+  .router-link-active:hover{
+    color: #EFE7E7;
+    text-decoration: none;
+  }
+  .entete {
+    font-size: 20px;
+  }
+  .button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 50%;
+    padding: 8px;
+    border-radius: 3px;
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    background: #5ac4bb;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  .vc-chrome {
+      position: relative;
+      margin: 0 auto;
+      z-index: 9;
+  }
+  .current-color {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: #000;
+      cursor: pointer;
+  }
+  .mapboxgl-ctrl-geocoder input[type='text'] {
+    font-size:12px;
+    width:100%;
+    border:0;
+    background-color:transparent;
+    height:40px;
+    margin:0;
+    color:rgba(0,0,0,.5);
+    padding:10px 10px 10px 40px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+  }
+  .mapboxgl-ctrl-geocoder input:focus {
+      color:rgba(0,0,0,.75);
+      outline:0;
+      box-shadow:none;
+      outline:thin dotted\8;
+  }
+  .navigation{
+    margin-left: 300px;
+  }
+  .arrow:hover{
+    cursor: pointer;
+  }
+  #liste{
+    margin-top: 80px;
+  }
+  #listeMarker{
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    text-decoration: none;
+  }
+  #ulMarker{
+    list-style-type: none;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 60px;
+    background-color: #fff;
+    margin-left: -20px;
+    cursor: pointer;
+  }
+  #btnDelMarker{
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+    float: right;
+    background: url('../../assets/remove.png') no-repeat;
+    width: 32px;
+    height: 32px;
+    border: none;
+  }
+  .markerTitle:hover + #btnDelMarker {
+    opacity: 1;
+  }
+  #btnDelMarker:hover{
+    opacity: 1;
+  }
+  #icon-full, #icon-full_exit{
+    padding: 15px;
+    vertical-align: middle;
+  }
+  .marker{
+    height: 40px;
+    width: 40px;
+  }
+  .numberCircle {
+    font: 32px Arial, sans-serif;
+
+    width: 2em;
+    height: 2em;
+    box-sizing: initial;
+    
+    background: #fff;
+    border: 0.1em solid #666;
+    color: #666;
+    text-align: center;
+    border-radius: 50%;    
+    
+    line-height: 2em;
+    box-sizing: content-box;   
+}
+.selectImage{
+  height: 100px;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#footer {
+  display:none;
+}
+.footer {
+  width:100%;
+  height:auto;
+  overflow:hidden;
+  background-color: #5ac4bb;
+}
+.info {
+  font-size: 18px;
+}
+.info > span {
+  font-weight:bold;
+}
+.fade-enter-active {
+  transition: opacity 1s ease;
+}
+
+.fade-leave-active {
+  transition: opacity 3s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

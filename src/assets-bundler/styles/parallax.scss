@@ -1,0 +1,43 @@
+@import "~@nextindex/next-scss/next-scss";
+.Masthead {
+  position: relative;
+  min-height: rem(350);
+  scroll-behavior: smooth;
+  overflow: hidden;
+  z-index: -1;
+  @include media($sm-up) {
+    min-height: 50vh;
+  }
+  @include has(image) {
+    width: 100%;
+    overflow: hidden;
+    height: 120%;
+    > img {
+      height: 100%;
+      max-width: none;
+      width: 100%;
+      @include object-fit(cover, top);
+    }
+    &.is-parallax {
+      left: 0;
+      position: absolute;
+      will-change: transform;
+      right: 0;
+      top: 0;
+      > img {
+        height: 100%;
+        max-width: none;
+        width: 100%;
+        @include object-fit(cover, top);
+      }
+    }
+    &.is-fixed {
+      position: fixed;
+      will-change: transform;
+      > img {
+        height: 100vh;
+        max-width: none;
+      }
+    }
+  }
+}

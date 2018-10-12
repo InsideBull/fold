@@ -1,0 +1,37 @@
+.v-spinner
+{
+/*	  font-size: 10px; 
+    width: 60px;
+    height: 40px;*/
+    /*margin: 25px auto;*/
+    text-align: center;
+ 
+}
+@-webkit-keyframes v-scaleStretchDelay
+{
+    0%,
+    100%
+    {
+        -webkit-transform: scaleY(1);
+                transform: scaleY(1);
+    }
+    50%
+    {
+        -webkit-transform: scaleY(0.4);
+                transform: scaleY(0.4);
+    }
+}
+@keyframes v-scaleStretchDelay
+{
+    0%,
+    100%
+    {
+        -webkit-transform: scaleY(1);
+                transform: scaleY(1);
+    }
+    50%
+    {
+        -webkit-transform: scaleY(0.4);
+                transform: scaleY(0.4);
+    }
+}
