@@ -8,7 +8,6 @@
 import Map from './components/Map'
 import Home from './components/Home'
 
-
 export default {
   name: 'App',
   components: {

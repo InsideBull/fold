@@ -8,25 +8,25 @@ export default {
     },
     data() {
         return {
+            accessToken: 'pk.eyJ1IjoiYXJhZGltaXNvbiIsImEiOiJjamwzY2F5bGExdTAyM3ZvZGw0YWM4MXMzIn0.x-OlbsTxKnwonoGNOlgMYw',
             height: '400px',
             width: '800px',
-            dialog: false,
-            drawer: null,
-            markerDrawer: null,
             hauteur: '400px',
             longueur: '800px',
-            slider: 12,
-            map: null,
+            dialog: false,
             testMarkerListeToggle: false,
+            spinner: false,
+            drawer: null,
+            markerDrawer: null,
+            map: null,
+            slider: 12,
             pincolor: '008000',
             defaultColor: "#ff0000",
             geojson: {
                 type: "FeatureCollection",
                 features: [],
             },
-            accessToken: 'pk.eyJ1IjoiYXJhZGltaXNvbiIsImEiOiJjamwzY2F5bGExdTAyM3ZvZGw0YWM4MXMzIn0.x-OlbsTxKnwonoGNOlgMYw',
             image: '',
-            spinner: false
         }
     },
     computed: {
@@ -37,10 +37,6 @@ export default {
     mounted() {
         this.clearLog();
         this.initMap();
-        //this.load()
-        //this.loadMarkersLayer();
-        //printToPdf()
-        this.compteID()
         this.listAllMarker();
         this.geojson = this.jsonToGeojson();
     },
@@ -253,67 +249,9 @@ export default {
          * @method mapLayer 
          */
         mapLayer(marker, icon, time) {
-            console.log(marker.properties.numero)
-            this.map.loadImage(icon, (error, image) => {
-                if (error) {
-                    throw error;
-                }
-                this.map.addImage(marker.properties.name, image);
-
-                setTimeout(() => {
-                    this.map.addLayer({
-                        'id': marker.properties.name,
-                        'type': 'symbol',
-                        'source': {
-                            'type': 'geojson',
-                            'data': {
-                                'type': 'FeatureCollection',
-                                'features': [{
-                                    'type': 'Feature',
-                                    'geometry': {
-                                        'type': 'Point',
-                                        'coordinates': marker.geometry.coordinates
-                                    },
-                                    "properties": {
-                                        "icon": marker.properties.name,
-                                        //"icon": "marker"
-                                    }
-                                }]
-                            }
-                        },
-                        'layout': {
-                            "icon-image": "{icon}",
-                            "icon-size": 0.8,
-                            "icon-allow-overlap": true,
-                            "icon-ignore-placement": true,
-                            "text-field": marker.properties.numero,
-                            "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-                            "text-size": 20,
-                            "text-offset": [-0.1, -0.2],
-                            "text-anchor": "center"
-                        },
-                        "paint": {
-                            "text-color": "#fff"
-                        },
-                    });
-                }, time)
-            });
-        },
-
-        /**
-         * Add marker to map using layer
-         * @param {Array} marker - Marker data properties 
-         * @param {String} icon - URL for icon image
-         * @method addMarker
-         */
-        addMarker(marker, icon) {
-            this.map.loadImage(icon, (error, image) => {
-                if (error) {
-                    throw error;
-                }
-                this.map.addImage(marker.name, image);
+            setTimeout(() => {
                 this.map.addLayer({
-                    'id': marker.name,
+                    'id': marker.properties.name,
                     'type': 'symbol',
                     'source': {
                         'type': 'geojson',
@@ -323,26 +261,68 @@ export default {
                                 'type': 'Feature',
                                 'geometry': {
                                     'type': 'Point',
-                                    'coordinates': marker.emp
+                                    'coordinates': marker.geometry.coordinates
                                 }
                             }]
                         }
                     },
                     'layout': {
-                        'icon-image': marker.name,
-                        'icon-size': 0.8,
+                        "icon-image": "location_pin",
+                        "icon-size": 0.6,
                         "icon-allow-overlap": true,
                         "icon-ignore-placement": true,
-                        "text-field": marker.idMarker,
+                        "text-field": marker.properties.numero,
                         "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-                        "text-size": 25,
-                        "text-offset": [0, -0.2]
+                        "text-size": 20,
+                        "text-offset": [-0.1, -0.2],
+                        "text-anchor": "center"
                     },
                     "paint": {
-                        "text-color": "#fff"
+                        "text-color": "#fff",
+                        "icon-color": "#fff"
                     },
                 });
+            }, time)
+        },
+
+        /**
+         * Add marker to map using layer
+         * @param {Array} marker - Marker data properties 
+         * @param {String} icon - URL for icon image
+         * @method addMarker
+         */
+        addMarker(marker, icon) {
+            this.map.addLayer({
+                'id': marker.name,
+                'type': 'symbol',
+                'source': {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': [{
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': marker.emp
+                            }
+                        }]
+                    }
+                },
+                'layout': {
+                    'icon-image': 'location_pin',
+                    'icon-size': 0.6,
+                    "icon-allow-overlap": true,
+                    "icon-ignore-placement": true,
+                    "text-field": marker.idMarker,
+                    "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
+                    "text-size": 25,
+                    "text-offset": [0, -0.2]
+                },
+                "paint": {
+                    "text-color": "#fff"
+                },
             });
+
             this.map.on('click', marker.name, e => {
                 // Ensure that if the map is zoomed out such that multiple
                 // copies of the feature are visible, the popup appears
@@ -437,33 +417,33 @@ export default {
 
         /** Change map style to dark */
         darkStyle() {
-            this.map.setStyle('mapbox://styles/mapbox/dark-v9');
-            this.load();
+            this.map.setStyle('mapbox://styles/aradimison/cjna2lkvl4msh2sp4o22vd21m');
+            this.markerLayerload();
         },
         /** Change map style to bright */
         brightStyle() {
-            this.map.setStyle('mapbox://styles/mapbox/bright-v9');
-            this.load();
+            this.map.setStyle('mapbox://styles/aradimison/cjna2rn364mu52smkgslfc0tt');
+            this.markerLayerload();
         },
         /** Change map style to night */
         nightStyle() {
             this.map.setStyle('mapbox://styles/aradimison/cjm8vrk716bnn2rjlv9xba3h1');
-            this.load();
+            this.markerLayerload();
         },
         /** Change map style to basic */
         basicStyle() {
-            this.map.setStyle('mapbox://styles/mapbox/basic-v9');
-            this.load();
+            this.map.setStyle('mapbox://styles/aradimison/cjl3hr5tq818b2soaia7maj2j');
+            this.markerLayerload();
         },
         /** Change map style to street */
         streetStyle() {
-            this.map.setStyle('mapbox://styles/mapbox/streets-v9');
-            this.load();
+            this.map.setStyle('mapbox://styles/aradimison/cjna2houh3x4l2sk739b4pers');
+            this.markerLayerload();
         },
         /** Change map style to satellite */
         satelliteStyle() {
             this.map.setStyle('mapbox://styles/mapbox/satellite-v9');
-            this.load();
+            this.markerLayerload();
         },
 
         /**
@@ -478,19 +458,7 @@ export default {
             var style = "url(data:image/svg+xml;base64," + encoded + ")";
             return style;
         },
-        /**
-         * convert image to base64
-         * @method base64
-         * @param {string} pincolor - A hexadecimal color 
-         * @return {string}
-         */
-        base64(pincolor) {
-            var svg = '<svg version="1.1" class="pinlogo" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve"> <path class="mark" fill="' + pincolor + '" d="M38.853,5.324L38.853,5.324c-7.098-7.098-18.607-7.098-25.706,0h0C6.751,11.72,6.031,23.763,11.459,31L26,52l14.541-21C45.969,23.763,45.249,11.72,38.853,5.324z M26.177,24c-3.314,0-6-2.686-6-6 s2.686-6,6-6s6,2.686,6,6S29.491,24,26.177,24z"/></svg>';
-            var encoded = window.btoa(svg);
-            var style = "data:image/svg+xml;base64," + encoded + "";
-            return style;
-        },
-
+        
         /**
          * Store the marker to localstorage and geojson data
          * @method storeMarker
@@ -611,10 +579,10 @@ export default {
 
         /**
          * Load markers on map with layer
-         * @method load
+         * @method markerLayerload
          * @return {void}
          */
-        load() {
+        markerLayerload() {
             this.clearLog()
             this.jsonToGeojson().features.forEach(marker => {
                 this.mapLayer(marker, template, 1000);
@@ -672,11 +640,15 @@ export default {
         print() {
             var printPdf = require('mapbox-print-pdf');
             this.spinner = true;
+            
             var template = `
                 <div data-scale-height="margin-top" id="footer" class="footer">
-                <sapn>Hello</span>
+                    <ul id="ulLegende">
+                        <li id="listeLegende"></li>
+                    </ul>
                 </div>
-            `
+            `;
+
             var elementClonedCb = (elem) => {
                 elem.removeAttribute("id");
             }
@@ -693,6 +665,12 @@ export default {
                     pdf.save("map.pdf");
                     this.spinner = false;
                 });
+        },
+
+        mapPrintLegend(){
+            this.jsonToGeojson().features.forEach(marker => {
+                document.getElementById('listeLegende').innerHTML += '<span>'+marker.properties.numero+'-&nbsp;</span><span class="markerTitle" >' + marker.properties.name + '</span>';
+            });
         },
 
         /**

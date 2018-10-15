@@ -253,7 +253,7 @@
                 </v-expansion-panel-content>
             </v-expansion-panel>
             <v-btn @click="print()">Print</v-btn>
-     <img :src="image"> 
+     <!-- <img :src="image">  -->
     <spin v-show="spinner"></spin>
       </v-list>
     </v-navigation-drawer>
